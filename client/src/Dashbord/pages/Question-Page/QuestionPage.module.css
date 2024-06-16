@@ -6,10 +6,7 @@
   width: 90%;
   margin-left: 280px;
 }
-.Sidebar{
-  z-index: 1;
 
-}
 .question0 {
   display: flex;
 
@@ -36,7 +33,7 @@
 
 
 .well {
-  top: 15px;
+  top: 35px;
   z-index: 1;
   position: sticky;
   margin-bottom: 40px;

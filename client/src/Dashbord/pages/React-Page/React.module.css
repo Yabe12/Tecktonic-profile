@@ -7,7 +7,6 @@
 }
 
 .sidebar {
-  z-index: 1;
   flex: 0 0 200px; /* Set a fixed width for the sidebar */
   color: #ecf0f1; /* Light color for sidebar text */
   margin-right: 40px;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import styles from './../header.module.css';
 import Dashboardbtn from './../../button/dashboardbtn';
@@ -6,8 +6,9 @@ import { useUserStore } from './../../../../../../server/lib/userStore'; // Adju
 
 function Dashbordheader() {
   const [isHovered, setIsHovered] = useState(false);
+  const [showLogout, setShowLogout] = useState(false); // State to manage visibility of logout button
   const navigate = useNavigate();
-  const { currentUser, isLoading } = useUserStore(); // Get currentUser and isLoading from the store
+  const { currentUser, isLoading, logout } = useUserStore(); // Get currentUser, isLoading, and logout from the store
 
   const handleDashboardClick = () => {
     navigate("/dashboard");
@@ -17,13 +18,14 @@ function Dashbordheader() {
     navigate(path);
   };
 
-  useEffect(() => {
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
 
-    // Check if currentUser exists to decide navigation state
-    if (!currentUser && !isLoading) {
-      navigate("/login");
-    }
-  }, [currentUser, isLoading, navigate]);
+  const handleAvatarClick = () => {
+    setShowLogout(!showLogout); // Toggle logout button visibility
+  };
 
   return (
     <header className={`${styles.header} ${styles.gradientBG}`}>
@@ -37,7 +39,7 @@ function Dashbordheader() {
       <nav>
         <ul className={styles.nav}>
           <li>
-            <RouterLink to="/" className={`${styles.link} ${styles.link}`}>
+            <RouterLink to="/" className={styles.link}>
               Back
             </RouterLink>
           </li>
@@ -47,18 +49,26 @@ function Dashbordheader() {
             </RouterLink>
           </li>
           {currentUser ? (
-            <li>
-              <div className={styles.logo}>
-                <img
-                  src={currentUser.avatar || "/avatar.png"} // Replace with actual avatar URL
-                  alt="User Avatar"
-                  className={styles.avatar}
-                />
-              </div>
-            </li>
+            <>
+              <li>
+                <div className={styles.avatarContainer}>
+                  <img
+                    src={currentUser.avatar || "/avatar.png"} // Replace with actual avatar URL
+                    alt="User Avatar"
+                    className={styles.avatar}
+                    onClick={handleAvatarClick} // Toggle logout button on click
+                  />
+                  {showLogout && (
+                    <button onClick={handleLogout} className={styles.logoutButton}>
+                      Logout
+                    </button>
+                  )}
+                </div>
+              </li>
+            </>
           ) : (
             <li>
-              <RouterLink to="/login" className={`${styles.link} ${styles.login}`}>
+              <RouterLink to="/login" className={styles.login}>
                 Login
               </RouterLink>
             </li>
