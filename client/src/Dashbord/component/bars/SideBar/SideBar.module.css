@@ -80,8 +80,15 @@
 
 .collapsed {
   width: 80px;
+  background-color: transparent;
 }
-
+.collapsed .link:hover {
+  background-color: rgba(204, 198, 198, 0.403);
+  width: auto;
+  margin-left: 0;
+  height: auto;
+  transform: none;
+}
 .toggleButton {
   display: flex;
   justify-content: center;
@@ -124,5 +131,10 @@
 
   .collapsed {
     width: 95px;
+  }
+}
+@media (max-width: 768px) {
+  .link:hover {
+    background-color: transparent;
   }
 }

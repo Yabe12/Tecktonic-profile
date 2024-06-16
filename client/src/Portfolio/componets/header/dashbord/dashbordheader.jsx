@@ -3,10 +3,10 @@ import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import styles from './../header.module.css';
 import Dashboardbtn from './../../button/dashboardbtn';
 import { useUserStore } from './../../../../../../server/lib/userStore'; // Adjust the path as per your file structure
+import { FaBars, FaTimes } from 'react-icons/fa'; // Import icons
 
 function Dashbordheader() {
-  const [isHovered, setIsHovered] = useState(false);
-  const [showLogout, setShowLogout] = useState(false); // State to manage visibility of logout button
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
   const { currentUser, isLoading, logout } = useUserStore(); // Get currentUser, isLoading, and logout from the store
 
@@ -16,16 +16,15 @@ function Dashbordheader() {
 
   const handleItemClicked = (path) => {
     navigate(path);
+    setIsMenuOpen(false); // Close the menu on navigation
   };
 
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-  };
-
-  const handleAvatarClick = () => {
-    setShowLogout(!showLogout); // Toggle logout button visibility
-  };
+  useEffect(() => {
+    // Check if currentUser exists to decide navigation state
+    if (!currentUser && !isLoading) {
+      navigate("/login");
+    }
+  }, [currentUser, isLoading, navigate]);
 
   return (
     <header className={`${styles.header} ${styles.gradientBG}`}>
@@ -37,38 +36,36 @@ function Dashbordheader() {
         <Dashboardbtn />
       </div>
       <nav>
-        <ul className={styles.nav}>
+        <button
+          className={styles.menuToggle}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          {isMenuOpen ? <FaTimes /> : <FaBars />}
+        </button>
+        <ul className={`${styles.nav} ${isMenuOpen ? styles.navOpen : ''}`}>
           <li>
-            <RouterLink to="/" className={styles.link}>
+            <RouterLink to="/" className={styles.link} onClick={() => handleItemClicked('/')}>
               Back
             </RouterLink>
           </li>
           <li>
-            <RouterLink to="/blog" className={styles.blog}>
+            <RouterLink to="/blog" className={styles.blog} onClick={() => handleItemClicked('/blog')}>
               Blog
             </RouterLink>
           </li>
           {currentUser ? (
-            <>
-              <li>
-                <div className={styles.avatarContainer}>
-                  <img
-                    src={currentUser.avatar || "/avatar.png"} // Replace with actual avatar URL
-                    alt="User Avatar"
-                    className={styles.avatar}
-                    onClick={handleAvatarClick} // Toggle logout button on click
-                  />
-                  {showLogout && (
-                    <button onClick={handleLogout} className={styles.logoutButton}>
-                      Logout
-                    </button>
-                  )}
-                </div>
-              </li>
-            </>
+            <li>
+              <div className={styles.logo}>
+                <img
+                  src={currentUser.avatar || "/avatar.png"} 
+                  alt="User Avatar"
+                  className={styles.avatar}
+                />
+              </div>
+            </li>
           ) : (
             <li>
-              <RouterLink to="/login" className={styles.login}>
+              <RouterLink to="/login" className={styles.login} onClick={() => handleItemClicked('/login')}>
                 Login
               </RouterLink>
             </li>

@@ -37,7 +37,7 @@
   z-index: 1;
   position: sticky;
   margin-bottom: 40px;
-  padding: 45px;
+  /* padding: 15px; */
   margin-top: 50px;
 }
 
@@ -108,20 +108,29 @@
 
 
 @media (max-width: 768px) {
+  .container {
+  margin: 0px;
+  }
   .question0 {
     flex-direction: column;
+
   }
   .imageNavigation {
-    /* flex-direction: column; */
+  
     margin-left: 5px;
     gap: 10px;
-    width: 250px;
+    width: 100px;
+justify-content: flex-start;
+margin-left: 25px;
     background-color: transparent;
   }
 }
 @media (max-width: 958px) {
   .question0 {
     flex-direction: column;
+  }
+  .well{
+    margin-left: 0px;
   }
   .imageNavigation {
     gap: 10px;

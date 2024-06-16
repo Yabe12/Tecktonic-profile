@@ -1,26 +1,19 @@
 .header {
-  z-index: 1;
+  z-index: 10; 
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   padding: 1rem 2rem;
   color: white;
-  background: linear-gradient(
-    -45deg,
-    #360a46,
-    #05354e,
-    #0e0157,
-    #01315e,
-    #210165
-  );
+  background: linear-gradient(-45deg, #360a46, #05354e, #0e0157, #01315e, #210165);
   background-size: 400% 400%;
   animation: gradientBG 20s ease infinite;
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
-  height: 60px; /* Adjust height as needed */
+  height: 60px;
 }
 
 .logo {
@@ -39,11 +32,30 @@
   list-style: none;
   display: flex;
   align-items: center;
-
   gap: 15px;
   margin-right: 10px;
+  transition: all 0.3s ease;
+  z-index: 1; 
 }
 
+.navOpen {
+  display: flex;
+  position: absolute;
+  
+  top: 60px; 
+  right: 0;
+  background-color: #142870; 
+  flex-direction: column;
+  width: 200px;
+  padding: 1rem;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-left:900px ;
+}
+
+.navOpen li {
+  margin-left: 100px; 
+}
 .link {
   color: white;
   background-color: transparent;
@@ -79,36 +91,95 @@
   background-color: #2853b8;
 }
 
-/* header.module.css */
-
-.avatarContainer {
-  position: relative;
-  display: inline-block;
-}
-
 .avatar {
-  width: 50px;
-  height: 50px;
+  height: 40px;
+  width: 40px;
   border-radius: 50%;
-  cursor: pointer;
+  display: none;
 }
 
-.logoutButton {
-  color: white;
-  background-color: #4e80f5;
-  padding: 10px 20px;
-  border-radius: 5px;
-  position: absolute;
-  top: 60px; /* Adjust this value as needed to position below the avatar */
-  left: 50%;
-  transform: translateX(-50%);
-  color: white;
-  border: none;
-  cursor: pointer;
-  display: none; /* Initially hidden */
+.menuToggle {
+  display: none;
 }
 
-.avatarContainer:hover .logoutButton {
-  display: block; /* Show the button when the avatar container is hovered */
+@media (max-width: 1024px) {
+  .header {
+    padding: 0.5rem 1rem;
+    height: auto;
+  }
+
+  .logo img {
+    height: 40px;
+    width: 40px;
+  }
+
+  .nav {
+    gap: 10px;
+    margin-right: 5px;
+  }
+
+  .link,
+  .blog,
+  .login {
+    padding: 0.3rem 0.3rem;
+    font-size: 0.9rem;
+  }
+
+  .avatar {
+    height: 35px;
+    width: 35px;
+  }
 }
 
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.5rem;
+  }
+
+  .logo {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .nav {
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+    margin: 0;
+    display: none;
+  }
+
+  .navOpen {
+    display: flex;
+  }
+
+  .nav li {
+    width: 100%;
+  }
+
+  .link,
+  .blog,
+  .login {
+    width: 100%;
+    text-align: center;
+    padding: 0.4rem 0;
+    font-size: 0.9rem;
+  }
+
+  .avatar {
+    height: 30px;
+    width: 30px;
+  }
+
+  .menuToggle {
+    background: none;
+    border: none;
+    color: #c1d7f9;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: auto;
+    display: block;
+  }
+}
