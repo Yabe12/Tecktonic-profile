@@ -52,7 +52,8 @@
 }
 
 .link:hover {
-  padding: 0.7rem 0.8rem;
+  padding: .7rem  1rem;
+  cursor: pointer;
   background-color: #4e80f5;
   filter: drop-shadow(0 0 30px #00c3d4);
 }

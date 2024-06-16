@@ -3,12 +3,15 @@ import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import styles from './../header.module.css';
 import Dashboardbtn from './../../button/dashboardbtn';
 import { useUserStore } from './../../../../../../server/lib/userStore'; // Adjust the path as per your file structure
+import { auth } from './../../../../../../server/lib/firebase'; // Adjust the path as per your file structure
+import { useChatStore } from './../../../../../../server/lib/chatStore'; // Adjust the path as per your file structure
 
 function Dashbordheader() {
   const [isHovered, setIsHovered] = useState(false);
   const [showLogout, setShowLogout] = useState(false); // State to manage visibility of logout button
   const navigate = useNavigate();
   const { currentUser, isLoading, logout } = useUserStore(); // Get currentUser, isLoading, and logout from the store
+  const { resetChat } = useChatStore(); // Import resetChat from useChatStore
 
   const handleDashboardClick = () => {
     navigate("/dashboard");
@@ -18,9 +21,15 @@ function Dashbordheader() {
     navigate(path);
   };
 
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
+  const handleLogout = async () => {
+    try {
+      await auth.signOut();
+      await logout();
+      resetChat();
+      navigate("/login");
+    } catch (err) {
+      console.log('Error during logout:', err);
+    }
   };
 
   const handleAvatarClick = () => {
