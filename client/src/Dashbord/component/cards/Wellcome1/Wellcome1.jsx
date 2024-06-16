@@ -6,7 +6,7 @@ const Wellcome1 = ({ title, subtitle, description, image }) => (
     <div className={styles.text}>
       <h1 className={styles.title}>{title}</h1>
       <p className={styles.subtitle}>{subtitle}</p>
-      <p className={styles.subtitle}>{description}</p>
+      <p className={styles.description}>{description}</p>
     </div>
     <div className={styles.image}>
       <img src={image} alt="File Icon" className={styles.fileImage} />

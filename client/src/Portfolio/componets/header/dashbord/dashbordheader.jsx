@@ -3,9 +3,10 @@ import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import styles from './../header.module.css';
 import Dashboardbtn from './../../button/dashboardbtn';
 import { useUserStore } from './../../../../../../server/lib/userStore'; // Adjust the path as per your file structure
+import { FaBars, FaTimes } from 'react-icons/fa'; // Import icons
 
 function Dashbordheader() {
-  const [isHovered, setIsHovered] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
   const { currentUser, isLoading } = useUserStore(); // Get currentUser and isLoading from the store
 
@@ -15,10 +16,10 @@ function Dashbordheader() {
 
   const handleItemClicked = (path) => {
     navigate(path);
+    setIsMenuOpen(false); // Close the menu on navigation
   };
 
   useEffect(() => {
-
     // Check if currentUser exists to decide navigation state
     if (!currentUser && !isLoading) {
       navigate("/login");
@@ -35,14 +36,20 @@ function Dashbordheader() {
         <Dashboardbtn />
       </div>
       <nav>
-        <ul className={styles.nav}>
+        <button
+          className={styles.menuToggle}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          {isMenuOpen ? <FaTimes /> : <FaBars />}
+        </button>
+        <ul className={`${styles.nav} ${isMenuOpen ? styles.navOpen : ''}`}>
           <li>
-            <RouterLink to="/" className={`${styles.link} ${styles.link}`}>
+            <RouterLink to="/" className={styles.link} onClick={() => handleItemClicked('/')}>
               Back
             </RouterLink>
           </li>
           <li>
-            <RouterLink to="/blog" className={styles.blog}>
+            <RouterLink to="/blog" className={styles.blog} onClick={() => handleItemClicked('/blog')}>
               Blog
             </RouterLink>
           </li>
@@ -50,7 +57,7 @@ function Dashbordheader() {
             <li>
               <div className={styles.logo}>
                 <img
-                  src={currentUser.avatar || "/avatar.png"} // Replace with actual avatar URL
+                  src={currentUser.avatar || "/avatar.png"} 
                   alt="User Avatar"
                   className={styles.avatar}
                 />
@@ -58,7 +65,7 @@ function Dashbordheader() {
             </li>
           ) : (
             <li>
-              <RouterLink to="/login" className={`${styles.link} ${styles.login}`}>
+              <RouterLink to="/login" className={styles.login} onClick={() => handleItemClicked('/login')}>
                 Login
               </RouterLink>
             </li>

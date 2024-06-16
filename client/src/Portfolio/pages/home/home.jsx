@@ -1,14 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import styles from './home.module.css';
-import { Link as RouterLink } from 'react-router-dom';
-import Signup from './../../componets/button/signup.jsx'
-import Next from '../../componets/button/next.jsx';
-import Homeheader from './../../componets/header/landing/homeheader.jsx';
-const words = ["Tribe", "Family", "Community", "Former", "Tech-Group", "Problem-Solvers", "Code-Enthusiast", "Coder", "Dreamer"];
+import React, { useState, useEffect } from "react";
+import styles from "./home.module.css";
+import { Link as RouterLink } from "react-router-dom";
+import Signup from "./../../componets/button/signup.jsx";
+import Next from "../../componets/button/next.jsx";
+import Homeheader from "./../../componets/header/landing/homeheader.jsx";
+const words = [
+  "Tribe",
+  "Family",
+  "Community",
+  "Former",
+  "Tech-Group",
+  "Problem-Solvers",
+  "Code-Enthusiast",
+  "Coder",
+  "Dreamer",
+];
 function Home() {
   const [dynamicWord, setDynamicWord] = useState(words[0]);
   const [dynamicColor, setDynamicColor] = useState("#37FF8B");
-  
+
   const animateWord = (word) => {
     let index = 0;
     const typingInterval = setInterval(() => {
@@ -29,49 +39,51 @@ function Home() {
     return () => clearInterval(intervalId);
   }, []);
 
-  const buttonData=[
+  const buttonData = [
     {
-      name:'create Account',
-      link:"/register" 
+      name: "create Account",
+      link: "/register",
     },
     {
-      name:'Log In',
-      link:"/login" 
-    }
-  ]
+      name: "Log In",
+      link: "/login",
+    },
+  ];
 
   return (
     <section id="home">
-
-    <div className={styles.container} id='Home'>
-      <Homeheader/>
-      <main className={styles.main}>
-        <h1 className={styles.dynamicText}>
-          We are a <span style={{ color: dynamicColor }} id="dynamicWord">{dynamicWord}</span>.
-        </h1>
-        <div className={styles.hometext}>
-        <p>
-        Techtonic Tribe is a vibrant community  dedicated to fostering innovation ,collaboration and personal growth.
-        </p>
-        </div>
-       <div className={styles.chat}>
-       <RouterLink to="/chat">
-         <p> Chat With Your Friends </p>
-       </RouterLink>
-        <div className={styles.signup}>
-         {buttonData.map((data,index)=>(
-           <Signup
-           key={index}
-           Name={data.name}
-           link={data.link} 
-           />
-          ))}  
-        </div>
+      <div className={styles.container} id="Home">
+        <Homeheader />
+        <main className={styles.main}>
+          <h1 className={styles.dynamicText}>
+            We are a{" "}
+            <span style={{ color: dynamicColor }} id="dynamicWord">
+              {dynamicWord}
+            </span>
+            .
+          </h1>
+          <div className={styles.hometext}>
+            <p>
+              Techtonic Tribe is a vibrant community dedicated to fostering
+              innovation ,collaboration and personal growth.
+            </p>
           </div>
-      </main>
-        <div className={styles.next}><Next path={'about'}/></div>
-    </div>
-   </section>
+          <div className={styles.chat}>
+            <RouterLink to="/chat">
+              <p> Chat With Your Friends </p>
+            </RouterLink>
+            <div className={styles.signup}>
+              {buttonData.map((data, index) => (
+                <Signup key={index} Name={data.name} link={data.link} />
+              ))}
+            </div>
+          </div>
+        </main>
+        <div className={styles.next}>
+          <Next path={"about"} />
+        </div>
+      </div>
+    </section>
   );
 }
 
