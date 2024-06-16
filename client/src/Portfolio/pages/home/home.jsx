@@ -1,20 +1,14 @@
-import React, { useState, useEffect } from "react";
-import styles from "./home.module.css";
-import { Link as RouterLink } from "react-router-dom";
-import Signup from "./../../componets/button/signup.jsx";
-import Next from "../../componets/button/next.jsx";
-import Homeheader from "./../../componets/header/landing/homeheader.jsx";
-const words = [
-  "Tribe",
-  "Family",
-  "Community",
-  "Former",
-  "Tech-Group",
-  "Problem-Solvers",
-  "Code-Enthusiast",
-  "Coder",
-  "Dreamer",
-];
+import React, { useState, useEffect } from 'react';
+import styles from './home.module.css';
+import { Link as RouterLink } from 'react-router-dom';
+import Signup from './../../componets/button/signup.jsx';
+import Next from '../../componets/button/next.jsx';
+import Homeheader from './../../componets/header/landing/homeheader.jsx';
+import { useUserStore } from './../../../../../server/lib/userStore.js'; // Adjust the path as per your file structure
+
+
+const words = ["Tribe", "Family", "Community", "Former", "Tech-Group", "Problem-Solvers", "Code-Enthusiast", "Coder", "Dreamer"];
+
 function Home() {
   const { currentUser } = useUserStore(); // Get currentUser from the store
   const [dynamicWord, setDynamicWord] = useState(words[0]);
@@ -40,49 +34,49 @@ function Home() {
     return () => clearInterval(intervalId);
   }, []);
 
-  const buttonData = [
+  const buttonData = currentUser ? [
     {
-      name: "create Account",
-      link: "/register",
+      name: 'Chat',
+      link: "/chat"
+    }
+  ] : [
+    {
+      name: 'Create Account',
+      link: "/register"
     },
     {
-      name: "Log In",
-      link: "/login",
-    },
+      name: 'Log In',
+      link: "/login"
+    }
   ];
 
   return (
     <section id="home">
-      <div className={styles.container} id="Home">
+      <div className={styles.container} id='Home'>
         <Homeheader />
         <main className={styles.main}>
           <h1 className={styles.dynamicText}>
-            We are a{" "}
-            <span style={{ color: dynamicColor }} id="dynamicWord">
-              {dynamicWord}
-            </span>
-            .
+            We are a <span style={{ color: dynamicColor }} id="dynamicWord">{dynamicWord}</span>.
           </h1>
           <div className={styles.hometext}>
             <p>
-              Techtonic Tribe is a vibrant community dedicated to fostering
-              innovation ,collaboration and personal growth.
+              Techtonic Tribe is a vibrant community dedicated to fostering innovation, collaboration, and personal growth.
             </p>
           </div>
           <div className={styles.chat}>
-            <RouterLink to="/chat">
-              <p> Chat With Your Friends </p>
-            </RouterLink>
+            <p> Chat With Your Friends </p>
             <div className={styles.signup}>
               {buttonData.map((data, index) => (
-                <Signup key={index} Name={data.name} link={data.link} />
+                <Signup
+                  key={index}
+                  Name={data.name}
+                  link={data.link}
+                />
               ))}
             </div>
           </div>
         </main>
-        <div className={styles.next}>
-          <Next path={"about"} />
-        </div>
+        <div className={styles.next}><Next path={'about'} /></div>
       </div>
     </section>
   );
