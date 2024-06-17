@@ -111,6 +111,9 @@
     flex-direction: column;
     align-items: center;
   }
+  .Sidebar{
+    z-index: 1;
+  }
   .questionPageContainer {
     width: 100%;
     margin-left: 15px;

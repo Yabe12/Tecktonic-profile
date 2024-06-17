@@ -15,6 +15,7 @@
   right: 0;
   left: 0;
   height: 60px;
+  z-index: 1;
 }
 
 .logo {
@@ -44,7 +45,7 @@
   border-radius: 5px;
 }
 .link:hover {
-  padding: .7rem  1rem;
+  padding: 0.5rem 0.5rem;
   cursor: pointer;
   background-color: #4e80f5;
   filter: drop-shadow(0 0 30px #00c3d4);
