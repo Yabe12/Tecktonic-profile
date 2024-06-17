@@ -11,39 +11,47 @@ const Admin = () => {
 
   useEffect(() => {
     const fetchBlogs = async () => {
-      const res = await axios.get('/api/blogs');
+      const res = await axios.get('/api/admin/blogs', {
+        headers: { Authorization: localStorage.getItem('token') }
+      });
       setBlogs(res.data);
     };
 
     fetchBlogs();
   }, []);
 
+
   const handleLogout = () => {
     localStorage.removeItem('token');
     navigate('/');
   };
 
-  const handleSubmit = async (e) => {
+ const handleSubmit = async (e) => {
     e.preventDefault();
-    const token = localStorage.getItem('token');
     await axios.post(
-      '/api/blogs',
+      '/api/admin/blogs',
       { title, content, image },
-      { headers: { Authorization: token } }
+      { headers: { Authorization: localStorage.getItem('token') } }
     );
     setTitle('');
     setContent('');
     setImage('');
-    const res = await axios.get('/api/blogs');
+    const res = await axios.get('/api/admin/blogs', {
+      headers: { Authorization: localStorage.getItem('token') }
+    });
     setBlogs(res.data);
   };
 
   const handleDelete = async (id) => {
-    const token = localStorage.getItem('token');
-    await axios.delete(`/api/blogs/${id}`, { headers: { Authorization: token } });
-    const res = await axios.get('/api/blogs');
+    await axios.delete(`/api/admin/blogs/${id}`, {
+      headers: { Authorization: localStorage.getItem('token') }
+    });
+    const res = await axios.get('/api/admin/blogs', {
+      headers: { Authorization: localStorage.getItem('token') }
+    });
     setBlogs(res.data);
   };
+
 
   return (
     <div>

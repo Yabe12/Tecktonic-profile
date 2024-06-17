@@ -103,7 +103,7 @@ The first provides the request details. In this simple example, this is not used
                 <h2>Beginner Videos</h2>
                 <div className={styles.videos}>
                 {beginnerVideos.map(video => (
-                <VideoCard key={video._id} videoLink={video.videoLink} description={video.description} />
+                <VideoCard key={video._id}  Title={video.topic} videoLink={video.videoLink} description={video.description} />
               ))}
                 </div>
               </div>
@@ -111,7 +111,7 @@ The first provides the request details. In this simple example, this is not used
                 <h2>Intermediate Videos</h2>
                 <div className={styles.videos}>
                 {intermediateVideos.map(video => (
-                <VideoCard key={video._id} videoLink={video.videoLink} description={video.description} />
+                <VideoCard key={video._id}  Title={video.topic} videoLink={video.videoLink} description={video.description} />
               ))}
                 </div>
               </div>
@@ -120,7 +120,7 @@ The first provides the request details. In this simple example, this is not used
                 <div className={styles.videos}>
                 
               {advancedVideos.map(video => (
-                <VideoCard key={video._id} videoLink={video.videoLink} description={video.description} />
+                <VideoCard key={video._id}  Title={video.topic} videoLink={video.videoLink} description={video.description} />
               ))}
                 </div>
               </div>

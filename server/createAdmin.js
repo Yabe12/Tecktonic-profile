@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
-mongoose.connect('mongodb://localhost:27017/project', {
+mongoose.connect('mongodb://localhost:27017/yourDatabaseName', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -18,7 +18,7 @@ const createAdmin = async () => {
 
   const admin = new User({
     email: 'admin.blog@gmail.com',
-    password: hashedPassword
+    password: "ADMIN"
   });
 
   await admin.save();

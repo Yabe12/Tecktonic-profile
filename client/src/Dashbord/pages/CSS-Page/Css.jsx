@@ -175,7 +175,7 @@ li {
                 <h2>Beginner Videos</h2>
                 <div className={styles.videos}>
                 {beginnerVideos.map(video => (
-                <VideoCard key={video._id} videoLink={video.videoLink} description={video.description} />
+                <VideoCard key={video._id}  Title={video.topic} videoLink={video.videoLink} description={video.description} />
               ))}
                 </div>
               </div>
@@ -183,7 +183,7 @@ li {
                 <h2>Intermediate Videos</h2>
                 <div className={styles.videos}>
                 {intermediateVideos.map(video => (
-                <VideoCard key={video._id} videoLink={video.videoLink} description={video.description} />
+                <VideoCard key={video._id}   Title={video.topic} videoLink={video.videoLink} description={video.description} />
               ))}
                 </div>
               </div>
@@ -191,7 +191,7 @@ li {
                 <h2>Advanced Videos</h2>
                 <div className={styles.videos}>
                 {advancedVideos.map(video => (
-                <VideoCard key={video._id} videoLink={video.videoLink} description={video.description} />
+                <VideoCard key={video._id}   Title={video.topic} videoLink={video.videoLink} description={video.description} />
               ))}
                 </div>
               </div>

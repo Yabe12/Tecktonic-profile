@@ -33,7 +33,9 @@ db.once('open', async () => {
 app.use('/api', videoRouter);
 
 app.use('/api/users', userRouter);
-app.use('/api/blogs', blogRouter);
+app.use('/api', blogRouter);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+
