@@ -9,19 +9,18 @@ import DashbordApp from './Dashbord/App.jsx';
 import Login from './ReactChat/components/login/Login.jsx';
 import ChatApp from './ReactChat/App.jsx';
 import MainHeader from './Portfolio/componets/header/main/mainheader.jsx';
-import CustomNotification from './ReactChat/components/notification/Notification.jsx';
 import Register from './ReactChat/components/login/register.jsx';
 import 'react-toastify/dist/ReactToastify.css'; 
 import Community from './Portfolio/pages/community/community.jsx';
 import BlogApp from './blog/App.jsx';
-import LoginPage from './blog/pages/login/loginpage.jsx';
+// import LoginPage from './blog/pages/login/loginpage.jsx';
 
 
 
 function App() {
   
   return (
-    <Router>
+    <>
       <MainHeader />
       <Routes>
         <Route path="/" element={<LandingPage />} />
@@ -32,11 +31,10 @@ function App() {
         <Route path="/dashboard/*" element={<Dashboard />} />
         <Route path="/chat" element={<ChatApp />} />
         <Route path="/blog/*" element={< Blog />} />
-        <Route path='/loginpage' element={<LoginPage />} />
+        {/* <Route path='/loginpage' element={<LoginPage />} /> */}
 
       </Routes>
-      <CustomNotification />
-    </Router>
+    </>
   );
 }
 

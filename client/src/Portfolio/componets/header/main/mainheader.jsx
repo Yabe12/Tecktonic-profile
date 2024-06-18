@@ -13,10 +13,12 @@ const MainHeader = () => {
       return <Dashbordheader />;
     } else if (location.pathname === '/login') {
       return <LoginHeader />;
-    } else if (location.pathname === '/blog') {
-      return <Blogheader />;
+    }
+    //  else if (location.pathname === '/blog') {
+    //   return <Blogheader />;
 
-    } else if (location.pathname === '/chat') {
+    // } 
+    else if (location.pathname === '/chat') {
       return <ChatHeader />;
     }
     return null;

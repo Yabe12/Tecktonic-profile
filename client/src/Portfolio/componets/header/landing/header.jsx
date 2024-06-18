@@ -24,16 +24,16 @@ function Header() {
       <nav>
         <ul className={styles.nav}>
           <li>
-            <ScrollLink to="home" spy={true} smooth={true} offset={50} duration={500} className={styles.link}>Home</ScrollLink>
+            <ScrollLink to="home"  offset={50} duration={500} className={styles.link}>Home</ScrollLink>
           </li>
           <li>
-            <ScrollLink to="about" spy={true} smooth={true} offset={50} duration={500} className={styles.link}>About</ScrollLink>
+            <ScrollLink to="about" offset={50} duration={500} className={styles.link}>About</ScrollLink>
           </li>
           <li>
-            <ScrollLink to="contact" spy={true} smooth={true} offset={50} duration={500} className={styles.link}>Contact</ScrollLink>
+            <ScrollLink to="contact"  offset={50} duration={500} className={styles.link}>Contact</ScrollLink>
           </li>
           <li>
-            <RouterLink to="/blog" spy={true} smooth={true} offset={50} duration={500} className={styles.blog}>Blog</RouterLink>
+            <RouterLink to="/blog" offset={50} duration={500} className={styles.blog}>Blog</RouterLink>
           </li>
      
          <li

@@ -9,8 +9,12 @@ const BlogDetail = () => {
 
   useEffect(() => {
     const fetchBlog = async () => {
-      const res = await axios.get(`/api/blogs/${id}`);
-      setBlog(res.data);
+      try {
+        const res = await axios.get(`http://localhost:5000/api/blogs/${id}`);
+        setBlog(res.data);
+      } catch (err) {
+        console.error(err);
+      }
     };
 
     fetchBlog();

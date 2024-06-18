@@ -9,6 +9,7 @@ import Adcard from "../../componets/card/adcard";
 import Card3 from "../../componets/card/aboutcard3.";
 import Join from "../../../Dashbord/component/cards/FileCards/HomePagecard/card";
 import Card4 from "../../componets/card/aboutcard4";
+
 function About() {
   const cardContainerRef = useRef(null);
 

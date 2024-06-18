@@ -28,16 +28,16 @@ function Homeheader() {
       <nav>
         <ul className={styles.nav}>
           <li>
-            <Link to="/" spy={true} smooth={true} offset={50} duration={500} className={styles.link}>Home</Link>
+            <Link to="/" offset={50} duration={500} className={styles.link}>Home</Link>
           </li>
           <li>
-            <Link to="about" spy={true} smooth={true} offset={50} duration={500} className={styles.link}>About</Link>
+            <Link to="about" offset={50} duration={500} className={styles.link}>About</Link>
           </li>
           <li>
-            <Link to="contact" spy={true} smooth={true} offset={50} duration={500} className={styles.link}>Contact</Link>
+            <Link to="contact"offset={50} duration={500} className={styles.link}>Contact</Link>
           </li>
           <li>
-            <RouterLink to="/blog" spy={true} smooth={true} offset={50} duration={500} className={styles.blog}>Blog</RouterLink>
+            <RouterLink to="/blog"  offset={50} duration={500} className={styles.blog}>Blog</RouterLink>
           </li>
           <li
             onMouseEnter={() => setIsHovered(true)}
