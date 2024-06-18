@@ -10,7 +10,7 @@ const DropdownMenu = ({ handleItemClicked }) => {
         <li><RouterLink to="/dashboard">Home</RouterLink></li>
         <li><div onClick={() => handleItemClicked("/dashboard/css")}>CSS</div></li>
         <li><div onClick={() => handleItemClicked("/dashboard/mongo")}>Mongo</div></li>
-        <li><div onClick={() => handleItemClicked("/dashboard/mernstack")}>Mern Stack</div></li>
+        <li><div onClick={() => handleItemClicked("/dashboard/node")}>Node Js</div></li>
         <li><div onClick={() => handleItemClicked("/dashboard/reactpage")}>React Page</div></li>
       </ul>
     </div>

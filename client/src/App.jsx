@@ -13,7 +13,6 @@ import Register from './ReactChat/components/login/register.jsx';
 import 'react-toastify/dist/ReactToastify.css'; 
 import Community from './Portfolio/pages/community/community.jsx';
 import BlogApp from './blog/App.jsx';
-// import LoginPage from './blog/pages/login/loginpage.jsx';
 
 
 
@@ -31,8 +30,6 @@ function App() {
         <Route path="/dashboard/*" element={<Dashboard />} />
         <Route path="/chat" element={<ChatApp />} />
         <Route path="/blog/*" element={< Blog />} />
-        {/* <Route path='/loginpage' element={<LoginPage />} /> */}
-
       </Routes>
     </>
   );

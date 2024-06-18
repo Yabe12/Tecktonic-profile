@@ -25,7 +25,7 @@ function Chatpageheader() {
             <RouterLink to="/" className={styles.link}>Home</RouterLink>
           </li>
           <li>
-            <RouterLink to="/dashboard" className={`${styles.link} ${styles.login}`}>Dashboard</RouterLink>
+            <RouterLink to="/dashboard" className={styles.link}>Dashboard</RouterLink>
           </li>
         </ul>
       </nav>

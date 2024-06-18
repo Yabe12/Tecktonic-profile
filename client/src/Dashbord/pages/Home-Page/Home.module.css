@@ -93,6 +93,7 @@
     }
  
     .icons {
+      margin-left: 100px;
       height: auto;
       padding: 10px;
       z-index: -1;
