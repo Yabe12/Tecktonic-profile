@@ -73,12 +73,10 @@ router.put('/:id', async (req, res) => {
 // Delete a blog
 router.delete('/:id', async (req, res) => {
   try {
-    const blog = await Blog.findById(req.params.id);
-    if (blog == null) {
-      return res.status(404).json({ message: 'Cannot find blog' });
+    const blog = await Blog.findByIdAndDelete(req.params.id);
+    if (!blog) {
+      return res.status(404).json({ message: 'Blog not found' });
     }
-
-    await blog.remove();
     res.json({ message: 'Deleted blog' });
   } catch (err) {
     res.status(500).json({ message: err.message });

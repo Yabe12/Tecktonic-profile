@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import './BlogList.css'; // Import the CSS file
 
 const BlogList = () => {
   const [blogs, setBlogs] = useState([]);
@@ -20,14 +21,17 @@ const BlogList = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Blogs</h1>
+    <div className="blog-list">
+      <h1>Recent Blogs</h1>
       {blogs.map((blog) => (
         <div key={blog._id} className="blog-card">
-         <Link to={`/blog/${blog._id}`}>
-            <img src={blog.image} alt={blog.title} />
-            <h2>{blog.title}</h2>
-            <p>{blog.summery}</p>
+          <Link to={`/blog/${blog._id}`}>
+            <img src={blog.image} alt={blog.title} className="image" />
+            <div className="blog-content">
+              <h2>{blog.title}</h2>
+              <p>{blog.content}</p>
+              <p>{blog.summary}</p>
+            </div>
           </Link>
         </div>
       ))}
