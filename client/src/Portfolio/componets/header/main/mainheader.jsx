@@ -14,10 +14,10 @@ const MainHeader = () => {
     } else if (location.pathname === '/login') {
       return <LoginHeader />;
     }
-    //  else if (location.pathname === '/blog') {
-    //   return <Blogheader />;
+     else if (location.pathname === '/blog') {
+      return <Blogheader />;
 
-    // } 
+    } 
     else if (location.pathname === '/chat') {
       return <ChatHeader />;
     }
