@@ -8,12 +8,14 @@ const BlogDetail = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log(`Fetching blog with id: ${id}`);
     const fetchBlog = async () => {
       try {
         const res = await axios.get(`http://localhost:5000/api/blogs/${id}`);
+        console.log('Fetched blog detail:', res.data);
         setBlog(res.data);
       } catch (err) {
-        console.error(err);
+        console.error('Error fetching blog detail:', err);
       }
     };
 
