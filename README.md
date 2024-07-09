@@ -144,7 +144,7 @@ Contributions are welcome! Please follow these steps:
 ## License
 MIT License
 
-Copyright (c) 2024 [Fitsum Helina]
+Copyright (c) 2024 [YEABSIRA BEHAILU]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
